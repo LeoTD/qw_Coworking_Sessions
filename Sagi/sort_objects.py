@@ -20,7 +20,6 @@ for language in languages:
 
 sorted_languages = sorted(languages, key=attrgetter('lang_id'))
 
-
 print("----------")
 for language in sorted_languages:
     print(language)
