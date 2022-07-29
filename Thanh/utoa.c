@@ -3,6 +3,11 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdint.h>
+
+
 void my_strrev(char *str) {
     char *result;
     int i, j;
@@ -75,10 +80,12 @@ int main(void)
 {
     long int j = 4294967295;
     char buffer[500];
-
+/*
     printf("%u\n", (unsigned int)j);
 
     my_utoa(j, buffer, 10);
 
     printf("%s\n", buffer);
+    */
+    printf("%d\n", sizeof(uintptr_t));
 }
