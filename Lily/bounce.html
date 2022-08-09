@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<div id="label" style="background-color: blue;
+     border-radius: 3px; position: absolute; left: 0px; top:
+      0px; min-width: 100px; min-height: 100px; text-align:
+       center; font-weight: bold; color: #999;">Not loaded</div>
+
+<head>
+    <style>
+        body {
+            background-color: #0f0f13;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #label {
+            position: relative;
+
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        // Pull body and label
+        const body = document.querySelector('body')
+        const label = document.querySelector('#label')
+
+        // Set var for frames per second
+        let FPS = 15
+
+        // Getting rid of width and height vars -> no movement (WHYYYYY?)
+        let width
+            , height
+            , velocityX = 1
+            , velocityY = 0
+
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+
+        setInterval(() => {
+
+            // Each run of function - get orientation of box in space
+            let rect = label.getBoundingClientRect()
+
+            console.log("rect x,y: " + rect.x + " " + rect.y)
+            console.log("rect h,w: " + rect.height + " " + rect.width)
+
+            // If length from left to end of box is >= width of viewport (hits right side)
+            // Or if there is no space between box and left of viewport (hits left side)
+            // Reverse the horizonal direction
+            if (rect.x + rect.width >= window.innerWidth || rect.x <= 0) {
+                velocityX = -velocityX
+            }
+
+            // Same logic handling the top and bottom
+            if (rect.y + rect.height >= window.innerHeight || rect.y <= 0) {
+                velocityY = -velocityY
+            }
+
+            // Each call of the function move the box 1 pixel from location
+            label.style.left = rect.x + velocityX + 'px'
+            label.style.top = rect.y + velocityY + 'px'
+
+            // Specify movement speed
+        }, 1000 / FPS)
+
+
+    </script>
+
+</html>

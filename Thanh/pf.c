@@ -174,7 +174,7 @@ int my_printf(char * restrict format, ...) {
             char buffer[500];
             my_utoa((uintptr_t)ptr, buffer, 16);
             // print
-            int len = my_strlen(buffer);
+            int len = my_strlen(ptr);
             write(1,"0x",2);
             write(1,buffer,len);
         }

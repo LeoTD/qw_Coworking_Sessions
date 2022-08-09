@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"> </script>
+
+    <script type="text/javascript">
+        let x;
+        let y;
+
+        let xspeed;
+        let yspeed;
+        setup();
+        draw();
+        function setup() {
+            createCanvas(800, 600);
+            x = random(width - 81);
+            y = random(height - 60);
+            xspeed = 3;
+            yspeed = 3;
+            console.log(height + " " + width);
+        }
+
+        function draw() {
+            background(0);
+
+            x = x + xspeed;
+            y = y + yspeed;
+
+            if (x + 80 >= width || x <= 0) {
+                xspeed = -xspeed;
+                x += xspeed;
+            } 
+            if (y + 60 >= height || y <= 0) {
+                yspeed = -yspeed;
+                y += yspeed;
+            }
+            
+            rect(x, y, 80, 60);
+        }
+    </script>
+</body>
+
+</html>
